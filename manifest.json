@@ -1,0 +1,89 @@
+{
+  "version": "15.0.0",
+  "artifacts": {
+    "Tree": {
+      "type": "cdk:tree",
+      "properties": {
+        "file": "tree.json"
+      }
+    },
+    "pythonworkshop.assets": {
+      "type": "cdk:asset-manifest",
+      "properties": {
+        "file": "pythonworkshop.assets.json",
+        "requiresBootstrapStackVersion": 6,
+        "bootstrapStackVersionSsmParameter": "/cdk-bootstrap/hnb659fds/version"
+      }
+    },
+    "pythonworkshop": {
+      "type": "aws:cloudformation:stack",
+      "environment": "aws://unknown-account/unknown-region",
+      "properties": {
+        "templateFile": "pythonworkshop.template.json",
+        "validateOnSynth": false,
+        "assumeRoleArn": "arn:${AWS::Partition}:iam::${AWS::AccountId}:role/cdk-hnb659fds-deploy-role-${AWS::AccountId}-${AWS::Region}",
+        "cloudFormationExecutionRoleArn": "arn:${AWS::Partition}:iam::${AWS::AccountId}:role/cdk-hnb659fds-cfn-exec-role-${AWS::AccountId}-${AWS::Region}",
+        "stackTemplateAssetObjectUrl": "s3://cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}/74fec23170a2c4870ea9b7f09d294fe1ce32a1ffb68cda359a0dc4e57d4894cc.json",
+        "requiresBootstrapStackVersion": 6,
+        "bootstrapStackVersionSsmParameter": "/cdk-bootstrap/hnb659fds/version",
+        "additionalDependencies": [
+          "pythonworkshop.assets"
+        ]
+      },
+      "dependencies": [
+        "pythonworkshop.assets"
+      ],
+      "metadata": {
+        "/pythonworkshop/PythonworkshopQueue/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "PythonworkshopQueueE5DB8D40"
+          }
+        ],
+        "/pythonworkshop/PythonworkshopQueue/Policy/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "PythonworkshopQueuePolicyAB57AEC3"
+          }
+        ],
+        "/pythonworkshop/PythonworkshopQueue/pythonworkshopPythonworkshopTopicBA843DCA/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "PythonworkshopQueuepythonworkshopPythonworkshopTopicBA843DCAEC93C5E9"
+          }
+        ],
+        "/pythonworkshop/PythonworkshopTopic/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "PythonworkshopTopic4F257D60"
+          }
+        ],
+        "/pythonworkshop/CDKMetadata/Default": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "CDKMetadata"
+          }
+        ],
+        "/pythonworkshop/CDKMetadata/Condition": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "CDKMetadataAvailable"
+          }
+        ],
+        "/pythonworkshop/BootstrapVersion": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "BootstrapVersion"
+          }
+        ],
+        "/pythonworkshop/CheckBootstrapVersion": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "CheckBootstrapVersion"
+          }
+        ]
+      },
+      "displayName": "pythonworkshop"
+    }
+  }
+}
